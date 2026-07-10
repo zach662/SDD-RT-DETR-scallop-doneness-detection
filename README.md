@@ -1,6 +1,7 @@
 # SDD-RT-DETR-scallop-doneness-detection
 
 🎯 Model Overview
+
 SDD‑RT‑DETR is a lightweight, real‑time object detection model designed specifically for scallop doneness classification in an industrial shucking line. SDD-RT-DETR integrates an enhanced backbone centered on the self-developed module HierarchicalRepBlock, a frequency-domain self-attetion module AIFI-EDFFN, a neck featuring the self-developed EfficientBalanceFusion module as the feature fusion unit and the Converse2DC3 module as the feature extraction unit, and a loss function named Wise-DIoU.
 
 It is built upon an improved RT‑DETR architecture and is capable of classifying shucked scallops into three categories:
@@ -15,6 +16,7 @@ Designed for deployment on edge‑class hardware (e.g., industrial computers wit
 
 
 📁 Project Structure
+
 text
 ├── improved_modules/     # All custom improvement modules
 ├── models/               # Model definitions
@@ -29,7 +31,11 @@ text
 ├── train.py              # Training script
 ├── detect.py             # Detection/inference script
 └── __init__.py           # Package initialization
+
+
+
 🚀 Quick Start
+
 Model configuration: all architecture details are defined in SDD-RT-DETR.yaml.
 
 Custom modules: all improved components (HierarchicalRepBlock, AIFI-EDFFN, EfficientBalanceFusionModule, Converse2DC3, Wise-DIoU) are placed in the improved_modules/ folder.
@@ -41,6 +47,7 @@ Inference: run detect.py for detection on images or video streams.
 
 
 📦 Environment & DependenciesEnvironment & Dependencies
+
 This project is developed and tested under the following environment:
 
 Python: 3.10.14
@@ -53,7 +60,8 @@ triton: 3.2.0
 
 
 
-Installation
+📦 Installation
+
 The required packages are consistent with the official Ultralytics RT-DETR setup. Please refer to (https://docs.ultralytics.com/models/rtdetr/) for more details
 Additionally, you may need to install the following extra dependencies:
 
@@ -63,4 +71,5 @@ pip install torch-dct==0.1.6
 
 
 📝 Citation
+
 If you find this work useful, please consider citing our paper
