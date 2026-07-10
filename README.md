@@ -1,7 +1,7 @@
 # SDD-RT-DETR-scallop-doneness-detection
-SDD-RT-DETR integrates an enhanced backbone centered on the self-developed module HierarchicalRepBlock, a frequency-domain self-attetion module AIFI-EDFFN, a neck featuring the self-developed EfficientBalanceFusion module as the feature fusion unit and the Converse2DC3 module as the feature extraction unit, and a loss function named Wise-DIoU.
+
 🎯 Model Overview
-SDD‑RT‑DETR is a lightweight, real‑time object detection model designed specifically for scallop doneness classification in an industrial shucking line.
+SDD‑RT‑DETR is a lightweight, real‑time object detection model designed specifically for scallop doneness classification in an industrial shucking line. SDD-RT-DETR integrates an enhanced backbone centered on the self-developed module HierarchicalRepBlock, a frequency-domain self-attetion module AIFI-EDFFN, a neck featuring the self-developed EfficientBalanceFusion module as the feature fusion unit and the Converse2DC3 module as the feature extraction unit, and a loss function named Wise-DIoU.
 
 It is built upon an improved RT‑DETR architecture and is capable of classifying shucked scallops into three categories:
 
