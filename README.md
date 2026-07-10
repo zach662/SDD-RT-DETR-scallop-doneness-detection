@@ -11,7 +11,7 @@ Medium (properly cooked)
 Cooked (over‑cooked)
 
 The model serves as the visual perception core of a feedback temperature control system, providing real‑time doneness information that enables automatic adjustment of the water‑bath temperature. This ensures consistent product quality while reducing manual intervention.
-Designed for deployment on edge‑class hardware (e.g., industrial computers with GPUs), it achieves < 50 ms inference per image with a lightweight footprint (< 200 MB memory), making it suitable for high‑speed production environments.
+Designed for deployment on edge‑class hardware, it achieves < 50 ms inference per image with a lightweight footprint (< 200 MB memory), making it suitable for high‑speed production environments.
 
 
 
@@ -81,6 +81,7 @@ triton: 3.2.0
 📦 Installation
 
 The required packages are consistent with the official Ultralytics RT-DETR setup. Please refer to (https://docs.ultralytics.com/models/rtdetr/) for more details
+
 Additionally, you may need to install the following extra dependencies:
 
 pip install timm==1.0.7 thop efficientnet_pytorch==0.7.1 einops grad-cam==1.5.4 dill==0.3.8 albumentations==1.4.11 pytorch_wavelets==1.3.0 tidecv PyWavelets opencv-python prettytable
@@ -91,3 +92,22 @@ pip install torch-dct==0.1.6
 📝 Citation
 
 If you find this work useful, please consider citing our paper.
+
+
+
+🖼️ Detection Results
+
+<img width="156" height="118" alt="image" src="https://github.com/user-attachments/assets/6d3bb78d-f2a6-4dc4-816d-bab8ad8df8bf" />
+
+<img width="156" height="118" alt="image" src="https://github.com/user-attachments/assets/4d676a5d-7bc2-42f2-b1f6-4713f048dff3" />
+
+<img width="156" height="118" alt="image" src="https://github.com/user-attachments/assets/3050dd11-698f-451c-b7ae-61cecd1dcff7" />
+
+
+
+
+
+
+
+
+
