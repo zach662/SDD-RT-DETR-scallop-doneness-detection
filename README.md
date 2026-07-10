@@ -72,4 +72,4 @@ pip install torch-dct==0.1.6
 
 📝 Citation
 
-If you find this work useful, please consider citing our paper
+If you find this work useful, please consider citing our paper.
