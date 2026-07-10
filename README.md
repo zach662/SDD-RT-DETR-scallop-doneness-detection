@@ -1,2 +1,66 @@
 # SDD-RT-DETR-scallop-doneness-detection
 SDD-RT-DETR integrates an enhanced backbone centered on the self-developed module HierarchicalRepBlock, a frequency-domain self-attetion module AIFI-EDFFN, a neck featuring the self-developed EfficientBalanceFusion module as the feature fusion unit and the Converse2DC3 module as the feature extraction unit, and a loss function named Wise-DIoU.
+🎯 Model Overview
+SDD‑RT‑DETR is a lightweight, real‑time object detection model designed specifically for scallop doneness classification in an industrial shucking line.
+
+It is built upon an improved RT‑DETR architecture and is capable of classifying shucked scallops into three categories:
+
+Raw (under‑cooked)
+Medium (properly cooked)
+Cooked (over‑cooked)
+
+The model serves as the visual perception core of a feedback temperature control system, providing real‑time doneness information that enables automatic adjustment of the water‑bath temperature. This ensures consistent product quality while reducing manual intervention.
+Designed for deployment on edge‑class hardware (e.g., industrial computers with GPUs), it achieves < 50 ms inference per image with a lightweight footprint (< 200 MB memory), making it suitable for high‑speed production environments.
+
+
+
+📁 Project Structure
+text
+├── improved_modules/     # All custom improvement modules
+├── models/               # Model definitions
+├── nn/                   # Neural network components
+├── engine/               # Training and inference engine
+├── cfg/                  # Configuration files
+├── utils/                # Utility functions
+├── hub/                  # Pretrained model hub
+├── data/                 # Data loading utilities
+├── data.yaml             # Dataset configuration
+├── SDD-RT-DETR.yaml      # Model architecture definition
+├── train.py              # Training script
+├── detect.py             # Detection/inference script
+└── __init__.py           # Package initialization
+🚀 Quick Start
+Model configuration: all architecture details are defined in SDD-RT-DETR.yaml.
+
+Custom modules: all improved components (HierarchicalRepBlock, AIFI-EDFFN, EfficientBalanceFusionModule, Converse2DC3, Wise-DIoU) are placed in the improved_modules/ folder.
+
+Training: run train.py to start training on your dataset.
+
+Inference: run detect.py for detection on images or video streams.
+
+
+
+📦 Environment & DependenciesEnvironment & Dependencies
+This project is developed and tested under the following environment:
+
+Python: 3.10.14
+PyTorch: 2.2.2+cu121
+Torchvision: 0.17.2+cu121
+timm: 1.0.7
+mmcv: 2.2.0
+mmengine: 0.10.4
+triton: 3.2.0
+
+
+
+Installation
+The required packages are consistent with the official Ultralytics RT-DETR setup. Please refer to (https://docs.ultralytics.com/models/rtdetr/) for more details
+Additionally, you may need to install the following extra dependencies:
+
+pip install timm==1.0.7 thop efficientnet_pytorch==0.7.1 einops grad-cam==1.5.4 dill==0.3.8 albumentations==1.4.11 pytorch_wavelets==1.3.0 tidecv PyWavelets opencv-python prettytable
+pip install torch-dct==0.1.6
+
+
+
+📝 Citation
+If you find this work useful, please consider citing our paper
