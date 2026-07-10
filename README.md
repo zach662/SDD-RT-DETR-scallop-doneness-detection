@@ -63,11 +63,17 @@ Inference: run detect.py for detection on images or video streams.
 This project is developed and tested under the following environment:
 
 Python: 3.10.14
+
 PyTorch: 2.2.2+cu121
+
 Torchvision: 0.17.2+cu121
+
 timm: 1.0.7
+
 mmcv: 2.2.0
+
 mmengine: 0.10.4
+
 triton: 3.2.0
 
 
