@@ -17,7 +17,6 @@ Designed for deployment on edge‑class hardware (e.g., industrial computers wit
 
 📁 Project Structure
 
-text
 
 ├── improved_modules/     # All custom improvement modules
 
