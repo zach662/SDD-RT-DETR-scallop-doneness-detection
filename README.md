@@ -18,18 +18,31 @@ Designed for deployment on edge‑class hardware (e.g., industrial computers wit
 📁 Project Structure
 
 text
+
 ├── improved_modules/     # All custom improvement modules
+
 ├── models/               # Model definitions
+
 ├── nn/                   # Neural network components
+
 ├── engine/               # Training and inference engine
+
 ├── cfg/                  # Configuration files
+
 ├── utils/                # Utility functions
+
 ├── hub/                  # Pretrained model hub
+
 ├── data/                 # Data loading utilities
+
 ├── data.yaml             # Dataset configuration
+
 ├── SDD-RT-DETR.yaml      # Model architecture definition
+
 ├── train.py              # Training script
+
 ├── detect.py             # Detection/inference script
+
 └── __init__.py           # Package initialization
 
 
