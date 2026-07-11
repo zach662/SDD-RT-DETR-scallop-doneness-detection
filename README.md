@@ -64,7 +64,7 @@ This model serves as the visual perception core of a feedback temperature contro
 
 
 
-🚀 Quick Start
+🚀 Training & Inference
 
 Before running training or inference, please modify the dataset path in `data.yaml` to point to your own dataset location.
 
