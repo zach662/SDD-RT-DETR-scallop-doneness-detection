@@ -17,8 +17,6 @@ class AFGCAttention(nn.Module):
         #x1 = x1.transpose(-1, -2).unsqueeze(-1)
         out1 = self.sigmoid(out1)
         out2 = torch.sum(torch.matmul(x2.transpose(-1, -2),x1.transpose(-1, -2)),dim=1).unsqueeze(-1).unsqueeze(-1)
-
-        #out2 = self.fc(x)
         out2 = self.sigmoid(out2)
         out = self.mix(out1,out2)
         out = self.conv1(out.squeeze(-1).transpose(-1, -2)).transpose(-1, -2).unsqueeze(-1)
