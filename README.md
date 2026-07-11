@@ -14,7 +14,23 @@ This model serves as the visual perception core of a feedback temperature contro
 
 
 
+🖼️ Detection Results
+
+<img width="312" height="236" alt="1" src="https://github.com/user-attachments/assets/71944757-8b8f-4b88-9b9b-76851f9d2019" />
+
+<img width="312" height="236" alt="5" src="https://github.com/user-attachments/assets/f5e1b421-2e42-43b6-8911-2e28f15f091a" />
+
+<img width="312" height="236" alt="2" src="https://github.com/user-attachments/assets/09e69fa7-c655-41d2-b8dc-ce9c4274af69" />
+
+
+
+<img width="312" height="236" alt="1118" src="https://github.com/user-attachments/assets/ee689008-126f-459d-932c-901ba0a0127e" />
+
+<img width="312" height="236" alt="a (91)" src="https://github.com/user-attachments/assets/de956de4-7dd4-4f44-b3bd-fb9444351c73" />
+
+<img width="312" height="236" alt="1491" src="https://github.com/user-attachments/assets/6598135c-5d3a-4861-9ab1-656e33622a40" />
 📁 Project Structure
+
 
 
 ├── improved_modules/     # All custom improvement modules
@@ -98,29 +114,6 @@ If you find this work useful, please consider citing our repository.
 
 📁 Sample Images: A subset of 50 images from the scallop doneness dataset is available at this link.
 [https://pan.baidu.com/s/1xOBTdDK4UGetyuL5eng0Ig?pwd=7j8s]
-
-
-
-🖼️ Detection Results
-
-<img width="312" height="236" alt="1" src="https://github.com/user-attachments/assets/71944757-8b8f-4b88-9b9b-76851f9d2019" />
-
-<img width="312" height="236" alt="5" src="https://github.com/user-attachments/assets/f5e1b421-2e42-43b6-8911-2e28f15f091a" />
-
-<img width="312" height="236" alt="2" src="https://github.com/user-attachments/assets/09e69fa7-c655-41d2-b8dc-ce9c4274af69" />
-
-
-
-<img width="312" height="236" alt="1118" src="https://github.com/user-attachments/assets/ee689008-126f-459d-932c-901ba0a0127e" />
-
-<img width="312" height="236" alt="a (91)" src="https://github.com/user-attachments/assets/de956de4-7dd4-4f44-b3bd-fb9444351c73" />
-
-<img width="312" height="236" alt="1491" src="https://github.com/user-attachments/assets/6598135c-5d3a-4861-9ab1-656e33622a40" />
-
-
-
-
-
 
 
 
