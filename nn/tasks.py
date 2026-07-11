@@ -18,26 +18,7 @@ from ultralytics.utils.plotting import feature_visualization
 from ultralytics.utils.torch_utils import (fuse_conv_and_bn, fuse_deconv_and_bn, initialize_weights, intersect_dicts,
                                            make_divisible, model_info, scale_img, time_sync)
 
-from ultralytics.nn.backbone.convnextv2 import *
-from ultralytics.nn.backbone.fasternet import *
-from ultralytics.nn.backbone.efficientViT import *
-from ultralytics.nn.backbone.EfficientFormerV2 import *
-from ultralytics.nn.backbone.VanillaNet import *
-# from ultralytics.nn.backbone.revcol import *
-from ultralytics.nn.backbone.lsknet import *
-from ultralytics.nn.backbone.SwinTransformer import *
-from ultralytics.nn.backbone.repvit import *
-from ultralytics.nn.backbone.CSwimTramsformer import *
-from ultralytics.nn.backbone.UniRepLKNet import *
-from ultralytics.nn.backbone.TransNext import *
-from ultralytics.nn.backbone.rmt import *
-from ultralytics.nn.backbone.pkinet import *
-from ultralytics.nn.backbone.mobilenetv4 import *
-from ultralytics.nn.backbone.starnet import *
-from ultralytics.nn.extra_modules.mobileMamba.mobilemamba import *
-from ultralytics.nn.backbone.MambaOut import *
-from ultralytics.nn.backbone.overlock import *
-from ultralytics.nn.backbone.lsnet import *
+
 
 try:
     import thop
@@ -755,88 +736,19 @@ def parse_model(d, ch, verbose=True, warehouse_manager=None):  # model_dict, inp
         n = n_ = max(round(n * depth), 1) if n > 1 else n  # depth gain
         if m in (Classify, Conv, ConvTranspose, GhostConv, Bottleneck, GhostBottleneck, SPP, SPPF, DWConv, DSConv, Focus,
                  BottleneckCSP, C1, C2, C2f, C3, C3TR, C3Ghost, nn.Conv2d, nn.ConvTranspose2d, DWConvTranspose2d, C3x, RepC3,
-                 ConvNormLayer, DWRC3, C3_DWR, C2f_DWR, C3_DCNv2_Dynamic, C2f_DCNv2_Dynamic, BasicBlock_DCNv2_Dynamic, BottleNeck_DCNv2_Dynamic,
-                 C3_DCNv2, C2f_DCNv2, BasicBlock_DCNv2, BottleNeck_DCNv2, C3_DCNv3, C2f_DCNv3, BasicBlock_DCNv3, BottleNeck_DCNv3,
-                 C3_iRMB, C2f_iRMB, C3_iRMB_Cascaded, C2f_iRMB_Cascaded, C3_Attention, C2f_Attention, C3_Ortho, C2f_Ortho,
-                 C3_DySnakeConv, C2f_DySnakeConv, DySnakeConv,
-                 C3_Faster, C2f_Faster, C3_Faster_EMA, C2f_Faster_EMA, C3_Faster_Rep, C2f_Faster_Rep, C3_Faster_Rep_EMA, C2f_Faster_Rep_EMA,
-                 AKConv, C3_AKConv, C2f_AKConv, C3_RFAConv, C2f_RFAConv, C3_RFCAConv, C2f_RFCAConv, C3_RFCBAMConv, C2f_RFCBAMConv,
-                 RFAConv, RFCAConv, RFCBAMConv, C3_Conv3XC, C2f_Conv3XC, C3_SPAB, C2f_SPAB, Conv3XCC3, DRBC3, DBBC3,
-                 C3_UniRepLKNetBlock, C2f_UniRepLKNetBlock, C3_DRB, C2f_DRB, C3_DWR_DRB, C2f_DWR_DRB, DWRC3_DRB,
-                 C2f_DBB, C3_DBB, CSP_EDLAN, GSConv, VoVGSCSP, VoVGSCSPC,
-                 C3_AggregatedAtt, C2f_AggregatedAtt, SPDConv,
-                 C3_DCNv4, C2f_DCNv4, BasicBlock_DCNv4, BottleNeck_DCNv4, HWD,
-                 C3_SWC, C2f_SWC, C3_iRMB_DRB, C2f_iRMB_DRB, C3_iRMB_SWC, C2f_iRMB_SWC,
-                 C3_VSS, C2f_VSS, C3_LVMB, C2f_LVMB, RepNCSPELAN4, DBBNCSPELAN4, OREPANCSPELAN4, DRBNCSPELAN4, Conv3XCNCSPELAN4, ADown,
-                 C3_ContextGuided, C2f_ContextGuided, CSP_PAC, DGCST, DGCST2, RetBlockC3, C3_RetBlock, C2f_RetBlock, RepNCSPELAN4_CAA,
-                 C3_PKIModule, C2f_PKIModule, C3_FADC, C2f_FADC, C3_PPA, C2f_PPA, SRFD, DRFD, RGCSPELAN, C3_Faster_CGLU, C2f_Faster_CGLU,
-                 C3_Star, C2f_Star, C3_Star_CAA, C2f_Star_CAA, C3_KAN, C2f_KAN, KANC3, C3_DEConv, C2f_DEConv, C3_SMPCGLU, C2f_SMPCGLU,
-                 C3_Heat, C2f_Heat, CSP_PTB, SimpleStem, VisionClueMerge, VSSBlock_YOLO, XSSBlock, GLSA, WTConv2d, C2f_FMB, gConvC3, C2f_gConv,
-                 LDConv, C2f_AdditiveBlock, C2f_AdditiveBlock_CGLU, CSP_MSCB, C2f_MSMHSA_CGLU, CSP_PMSFA, C2f_MogaBlock,
-                 C2f_SHSA, C2f_SHSA_CGLU, C2f_SMAFB, C2f_SMAFB_CGLU, CSP_MutilScaleEdgeInformationEnhance, C2f_FFCM, C2f_SFHF, CSP_FreqSpatial,
-                 C2f_MSM, CSP_MutilScaleEdgeInformationSelect, C2f_HDRAB, C2f_RAB, LFEC3, C2f_FCA, C2f_CAMixer, MANet, MANet_FasterBlock, MANet_FasterCGLU,
-                 MANet_Star, C2f_HFERB, C2f_DTAB, C2f_JDPM, C2f_ETB, C2f_FDT, PSConv, C2f_AP, C2f_ELGCA, C2f_ELGCA_CGLU, C2f_Strip, C2f_StripCGLU,
-                 C2f_KAT, C2f_Faster_KAN, C2f_DCMB, C2f_DCMB_KAN, C2f_GlobalFilter, C2f_DynamicFilter, RepHMS, C2f_SAVSS, C2f_MambaOut,
-                 C2f_EfficientVIM, C2f_EfficientVIM_CGLU, CSP_MSCB_SC, C2f_MambaOut_UniRepLK, C2f_IEL, IELC3, C2f_RCB, C2f_FAT, C2f_LEGM, C2f_MobileMamba,
-                 C2f_LFEM, LoGStem, C2f_SBSM, C2f_LSBlock, C2f_MambaOut_LSConv, C2f_TransMamba, C2f_EVS, C2f_EBlock, C2f_DBlock, C2f_FDConv, C2f_MambaOut_FDConv,
-                 C2f_PFDConv, C2f_FasterFDConv, FDConvC3, C2f_DSAN, C2f_DSAN_EDFFN, C2f_MambaOut_DSA, C2f_DSA, C2f_RMB, GSConvE, C2f_SFSConv, C2f_MambaOut_SFSC,
-                 C2f_PSFSConv, C2f_FasterSFSConv, C2f_GroupMamba, C2f_GroupMambaBlock, C2f_MambaVision, C2f_FourierConv, FourierConv, C2f_wConv, wConv2d,
-                 C2f_GLVSS, C2f_ESC, C2f_MBRConv3, C2f_MBRConv5, MBRConv3C3, MBRConv5C3, C2f_VSSD, C2f_TVIM, C2f_CSI, C2f_SHSA_EPGO, C2f_SHSA_EPGO_CGLU, C2f_ConvAttn,
-                 C2f_UniConvBlock, C2f_LGLB, C2f_ConverseB, C2f_Converse2D, Converse2DC3, Converse2D, RepStem, C2f_GCConv, GCConvC3, GCConv, C2f_CFBlock, C2f_FMABlock,
-                 C2f_LWGA, GCSE_ELAN, HierarchicalRepNet):
+                 ConvNormLayer, C2f_Converse2D, Converse2DC3, Converse2D, RepStem, C2f_GCConv, GCConvC3, GCConv, HierarchicalRepBlock):
             if args[0] == 'head_channel':
                 args[0] = d[args[0]]
             c1, c2 = ch[f], args[0]
             if c2 != nc:  # if c2 not equal to number of classes (i.e. for Classify() output)
                 c2 = make_divisible(min(c2, max_channels) * width, 8)
-
-            args = [c1, c2, *args[1:]]
-            if m in (DySnakeConv,):
-                c2 = c2 * 3
-            if m in (RepNCSPELAN4, DBBNCSPELAN4, OREPANCSPELAN4, DRBNCSPELAN4, Conv3XCNCSPELAN4, RepNCSPELAN4_CAA):
-                args[2] = make_divisible(min(args[2], max_channels) * width, 8)
-                args[3] = make_divisible(min(args[3], max_channels) * width, 8)
             
-            if m in (BottleneckCSP, C1, C2, C2f, C3, C3TR, C3Ghost, C3x, RepC3, DWRC3, C3_DWR, C2f_DWR, C3_DCNv2_Dynamic, C2f_DCNv2_Dynamic,
-                     C3_DCNv2, C2f_DCNv2, C3_DCNv3, C2f_DCNv3, C3_iRMB, C2f_iRMB, C3_iRMB_Cascaded, C2f_iRMB_Cascaded, 
-                     C3_Attention, C2f_Attention, C3_Ortho, C2f_Ortho, C3_DySnakeConv, C2f_DySnakeConv,
-                     C3_Faster, C2f_Faster, C3_Faster_EMA, C2f_Faster_EMA, C3_Faster_Rep, C2f_Faster_Rep, C3_Faster_Rep_EMA, C2f_Faster_Rep_EMA,
-                     C3_AKConv, C2f_AKConv, C3_RFAConv, C2f_RFAConv, C3_RFCAConv, C2f_RFCAConv, C3_RFCBAMConv, C2f_RFCBAMConv,
-                     C3_Conv3XC, C2f_Conv3XC, C3_SPAB, C2f_SPAB, C3_UniRepLKNetBlock, C2f_UniRepLKNetBlock, C3_DRB, C2f_DRB, C3_DWR_DRB, C2f_DWR_DRB, DWRC3_DRB,
-                     Conv3XCC3, DRBC3, DBBC3, C2f_DBB, C3_DBB, CSP_EDLAN, VoVGSCSP, VoVGSCSPC,
-                     C3_AggregatedAtt, C2f_AggregatedAtt, C3_DCNv4, C2f_DCNv4, C3_SWC, C2f_SWC, C3_iRMB_DRB, C2f_iRMB_DRB, C3_iRMB_SWC, C2f_iRMB_SWC,
-                     C3_VSS, C2f_VSS, C3_LVMB, C2f_LVMB, C3_ContextGuided, C2f_ContextGuided, RetBlockC3, C3_RetBlock, C2f_RetBlock,
-                     C3_PKIModule, C2f_PKIModule, C3_FADC, C2f_FADC, C3_PPA, C2f_PPA, RGCSPELAN, C3_Faster_CGLU, C2f_Faster_CGLU,
-                     C3_Star, C2f_Star, C3_Star_CAA, C2f_Star_CAA, C3_KAN, C2f_KAN, KANC3, C3_DEConv, C2f_DEConv, C3_SMPCGLU, C2f_SMPCGLU, 
-                     C3_Heat, C2f_Heat, CSP_PTB, XSSBlock, C2f_FMB, C2f_gConv, gConvC3, C2f_AdditiveBlock, C2f_AdditiveBlock_CGLU, CSP_MSCB,
-                     C2f_MSMHSA_CGLU, CSP_PMSFA, C2f_MogaBlock, C2f_SHSA, C2f_SHSA_CGLU, C2f_SMAFB, C2f_SMAFB_CGLU, CSP_MutilScaleEdgeInformationEnhance,
-                     C2f_FFCM, C2f_SFHF, CSP_FreqSpatial, C2f_MSM, CSP_MutilScaleEdgeInformationSelect, C2f_HDRAB, C2f_RAB, LFEC3, C2f_FCA, C2f_CAMixer, MANet,
-                     MANet_FasterBlock, MANet_FasterCGLU, MANet_Star, C2f_HFERB, C2f_DTAB, C2f_JDPM, C2f_ETB, C2f_FDT, C2f_AP, C2f_ELGCA, C2f_ELGCA_CGLU, 
-                     C2f_Strip, C2f_StripCGLU, C2f_KAT, C2f_Faster_KAN, C2f_DCMB, C2f_DCMB_KAN, C2f_GlobalFilter, C2f_DynamicFilter, C2f_SAVSS, C2f_MambaOut,
-                     C2f_EfficientVIM, C2f_EfficientVIM_CGLU, CSP_MSCB_SC, C2f_MambaOut_UniRepLK, C2f_IEL, IELC3, C2f_RCB, C2f_FAT, C2f_LEGM, C2f_MobileMamba,
-                     C2f_LFEM, C2f_SBSM, C2f_LSBlock, C2f_MambaOut_LSConv, C2f_TransMamba, C2f_EVS, C2f_EBlock, C2f_DBlock, C2f_FDConv, C2f_MambaOut_FDConv,
-                     C2f_PFDConv, C2f_FasterFDConv, FDConvC3, C2f_DSAN, C2f_DSAN_EDFFN, C2f_MambaOut_DSA, C2f_DSA, C2f_RMB, C2f_SFSConv, C2f_MambaOut_SFSC,
-                     C2f_PSFSConv, C2f_FasterSFSConv, C2f_GroupMamba, C2f_GroupMambaBlock, C2f_MambaVision, C2f_FourierConv, C2f_wConv, C2f_GLVSS, C2f_ESC,
-                     C2f_MBRConv3, C2f_MBRConv5, MBRConv3C3, MBRConv5C3, C2f_VSSD, C2f_TVIM, C2f_CSI, C2f_SHSA_EPGO, C2f_SHSA_EPGO_CGLU, C2f_ConvAttn, C2f_UniConvBlock,
-                     C2f_LGLB, C2f_ConverseB, C2f_Converse2D, Converse2DC3, C2f_GCConv, GCConvC3, C2f_CFBlock, C2f_FMABlock, C2f_LWGA, GCSE_ELAN, HierarchicalRepNet):
+            if m in (BottleneckCSP, C1, C2, C2f, C3, Converse2DC3, C2f_GCConv, GCConvC3, HierarchicalRepBlock):
                 args.insert(2, n)  # number of repeats
                 n = 1
-        elif m in (AIFI, AIFI_LPE, TransformerEncoderLayer_LocalWindowAttention, TransformerEncoderLayer_DAttention, TransformerEncoderLayer_HiLo, 
-                   TransformerEncoderLayer_EfficientAdditiveAttnetion, AIFI_RepBN, TransformerEncoderLayer_AdditiveTokenMixer,
-                   TransformerEncoderLayer_MSMHSA, TransformerEncoderLayer_DHSA, TransformerEncoderLayer_DPB, DTAB, ETB, FDT,
-                   TransformerEncoderLayer_Pola, TransformerEncoderLayer_TSSA, TransformerEncoderLayer_ASSA, TransformerEncoderLayer_Pola_CGLU,
-                   TransformerEncoderLayer_Pola_FMFFN, AIFI_SEFN, TransformerEncoderLayer_ASSA_SEFN, TransformerEncoderLayer_Pola_SEFN, AIFI_Mona,
-                   TransformerEncoderLayer_Pola_SEFN_Mona, TransformerEncoderLayer_ASSA_SEFN_Mona, AIFI_DyT, TransformerEncoderLayer_ASSA_SEFN_Mona_DyT,
-                   TransformerEncoderLayer_Pola_SEFN_Mona_DyT, AIFI_SEFFN, TransformerEncoderLayer_Pola_SEFFN_Mona_DyT, AIFI_EDFFN, TransformerEncoderLayer_Pola_EDFFN_Mona_DyT,
-                   TransformerEncoderLayer_MSLA, TransformerEncoderLayer_EPGO, TransformerEncoderLayer_SHSA, TransformerEncoderLayer_SHSA_EPGO, AIFI_DML):
+        elif m in (AIFI, AIFI_EDFFN):
             c2 = ch[f]
             args = [ch[f], *args]
-        elif m in (HGStem, HGBlock, Ghost_HGBlock, Rep_HGBlock, HGBlock_Attention):
-            c1, cm, c2 = ch[f], args[0], args[1]
-            args = [c1, cm, c2, *args[2:]]
-            if m in (HGBlock, Ghost_HGBlock, Rep_HGBlock, HGBlock_Attention):
-                args.insert(4, n)  # number of repeats
-                n = 1
         elif m is nn.BatchNorm2d:
             args = [ch[f]]
         elif m in {Concat}:
@@ -858,39 +770,7 @@ def parse_model(d, ch, verbose=True, warehouse_manager=None):  # model_dict, inp
             elif len(args) == 1:
                 m = timm.create_model(m, pretrained=args[0], features_only=True)
             c2 = m.feature_info.channels()
-        elif m in {convnextv2_atto, convnextv2_femto, convnextv2_pico, convnextv2_nano, convnextv2_tiny, convnextv2_base, convnextv2_large, convnextv2_huge,
-                   fasternet_t0, fasternet_t1, fasternet_t2, fasternet_s, fasternet_m, fasternet_l,
-                   EfficientViT_M0, EfficientViT_M1, EfficientViT_M2, EfficientViT_M3, EfficientViT_M4, EfficientViT_M5,
-                   efficientformerv2_s0, efficientformerv2_s1, efficientformerv2_s2, efficientformerv2_l,
-                   vanillanet_5, vanillanet_6, vanillanet_7, vanillanet_8, vanillanet_9, vanillanet_10, vanillanet_11, vanillanet_12, vanillanet_13, vanillanet_13_x1_5, vanillanet_13_x1_5_ada_pool,
-                #    RevCol,
-                   lsknet_t, lsknet_s,
-                   SwinTransformer_Tiny,
-                   repvit_m0_9, repvit_m1_0, repvit_m1_1, repvit_m1_5, repvit_m2_3,
-                   CSWin_tiny, CSWin_small, CSWin_base, CSWin_large,
-                   unireplknet_a, unireplknet_f, unireplknet_p, unireplknet_n, unireplknet_t, unireplknet_s, unireplknet_b, unireplknet_l, unireplknet_xl,
-                   transnext_micro, transnext_tiny, transnext_small, transnext_base,
-                   RMT_T, RMT_S, RMT_B, RMT_L,
-                   PKINET_T, PKINET_S, PKINET_B,
-                   MobileNetV4ConvSmall, MobileNetV4ConvMedium, MobileNetV4ConvLarge, MobileNetV4HybridMedium, MobileNetV4HybridLarge,
-                   starnet_s050, starnet_s100, starnet_s150, starnet_s1, starnet_s2, starnet_s3, starnet_s4,
-                   MobileMamba_T2, MobileMamba_T4, MobileMamba_S6, MobileMamba_B1, MobileMamba_B2, MobileMamba_B4,
-                   mambaout_femto, mambaout_kobe, mambaout_tiny, mambaout_small, mambaout_base,
-                   overlock_xt, overlock_t, overlock_s, overlock_b,
-                   lsnet_t, lsnet_s, lsnet_b
-                   }:
-            # if m is RevCol:
-            #     args[1] = [make_divisible(min(k, max_channels) * width, 8) for k in args[1]]
-            #     args[2] = [max(round(k * depth), 1) for k in args[2]]
-            m = m(*args)
-            c2 = m.channel
-        elif m in {EMA, SpatialAttention, BiLevelRoutingAttention, BiLevelRoutingAttention_nchw,
-                   TripletAttention, CoordAtt, CBAM, BAMBlock, LSKBlock, SEAttention, CPCA, EfficientAttention, 
-                   MPCA, deformable_LKA, EffectiveSEModule, LSKA, SegNext_Attention, DAttention, MLCA,
-                   FocusedLinearAttention, TransNeXt_AggregatedAttention, HiLo, ChannelAttention_HSFPN, ELA_HSFPN, CA_HSFPN, CAA_HSFPN,
-                   DySample, CARAFE, ELA, CAA, CAFM, LocalWindowAttention, EfficientAdditiveAttnetion, AFGCAttention, EUCB, ContrastDrivenFeatureAggregation,
-                   FSA, AttentiveLayer, EUCB_SC
-                #    ScConv, LAWDS, EMSConv, EMSConvP, Partial_conv3, FocalModulation
+        elif m in {EMA, SpatialAttention, , CBAM, AFGCAttention, EUCB
                    }:
             c2 = ch[f]
             args = [c2, *args]
@@ -900,175 +780,7 @@ def parse_model(d, ch, verbose=True, warehouse_manager=None):  # model_dict, inp
         elif m is ContextGuidedBlock_Down:
             c2 = ch[f] * 2
             args = [ch[f], *args]
-        # elif m is BiFusion:
-        #     c1 = [ch[x] for x in f]
-        #     c2 = make_divisible(min(args[0], max_channels) * width, 8)
-        #     args = [c1, c2]
-        # --------------GOLD-YOLO--------------
-        elif m in {SimFusion_4in, AdvPoolFusion}:
-            c2 = sum(ch[x] for x in f)
-        elif m is SimFusion_3in:
-            c2 = args[0]
-            if c2 != nc:  # if c2 not equal to number of classes (i.e. for Classify() output)
-                c2 = make_divisible(min(c2, max_channels) * width, 8)
-            args = [[ch[f_] for f_ in f], c2]
-        elif m is IFM:
-            c1 = ch[f]
-            c2 = sum(args[0])
-            args = [c1, *args]
-        elif m is InjectionMultiSum_Auto_pool:
-            c1 = ch[f[0]]
-            c2 = args[0]
-            args = [c1, *args]
-        elif m is PyramidPoolAgg:
-            c2 = args[0]
-            args = [sum([ch[f_] for f_ in f]), *args]
-        elif m is TopBasicLayer:
-            c2 = sum(args[1])
-        # --------------GOLD-YOLO--------------
-        # --------------ASF--------------
-        elif m is Zoom_cat:
-            c2 = sum(ch[x] for x in f)
-        elif m is Add:
-            c2 = ch[f[-1]]
-        elif m in {ScalSeq, DynamicScalSeq}:
-            c1 = [ch[x] for x in f]
-            c2 = make_divisible(args[0] * width, 8)
-            args = [c1, c2]
-        elif m is asf_attention_model:
-            args = [ch[f[-1]]]
-        # --------------ASF--------------
-        elif m is SDI:
-            args = [[ch[x] for x in f]]
-        elif m is Multiply:
-            c2 = ch[f[0]]
-        elif m in {AttentionUpsample, AttentionDownsample}:
-            c2 = ch[f]
-            args = [c2]
-        elif m is FocusFeature:
-            c1 = [ch[x] for x in f]
-            c2 = int(c1[1] * 0.5 * 3)
-            args = [c1, *args]
-        elif m is DASI:
-            c1 = [ch[x] for x in f]
-            args = [c1, c2]
-        elif m is CFC_CRB:
-            c1 = ch[f]
-            c2 = c1 // 2
-            args = [c1, *args]
-        elif m is SFC_G2:
-            c1 = [ch[x] for x in f]
-            c2 = c1[0]
-            args = [c1]
-        elif m in {CGAFusion, CAFMFusion, SDFM, PSFM}:
-            c2 = ch[f[1]]
-            args = [c2, *args]
-        elif m in {ContextGuideFusionModule}:
-            c1 = [ch[x] for x in f]
-            c2 = 2 * c1[1]
-            args = [c1]
-        elif m in {PSA}:
-            c2 = ch[f]
-            args = [c2, *args]
-        elif m in {SBA}:
-            c1 = [ch[x] for x in f]
-            c2 = c1[-1]
-            args = [c1, c2]
-        elif m in {WaveletPool}:
-            c2 = ch[f] * 4
-        elif m in {WaveletUnPool}:
-            c2 = ch[f] // 4
-        elif m in {CSPOmniKernel}:
-            c2 = ch[f]
-            args = [c2]
-        elif m in {ChannelTransformer, PyramidContextExtraction}:
-            c1 = [ch[x] for x in f]
-            c2 = c1
-            args = [c1]
-        elif m in {GetIndexOutput}:
-            c2 = ch[f][args[0]]
-        elif m in {RCM}:
-            c2 = ch[f]
-            args = [c2, *args]
-        elif m in {DynamicInterpolationFusion}:
-            c2 = ch[f[0]]
-            args = [[ch[x] for x in f]]
-        elif m in {FuseBlockMulti}:
-            c2 = ch[f[0]]
-            args = [c2]
-        elif m in {CrossLayerChannelAttention, CrossLayerSpatialAttention}:
-            c2 = [ch[x] for x in f]
-            args = [c2[0], *args]
-        elif m in {FreqFusion}:
-            c2 = ch[f[0]]
-            args = [[ch[x] for x in f], *args]
-        elif m in {DynamicAlignFusion, ConvEdgeFusion}:
-            c2 = make_divisible(min(args[0], max_channels) * width, 8)
-            args = [[ch[x] for x in f], c2]
-        elif m in {MutilScaleEdgeInfoGenetator}:
-            c1 = ch[f]
-            c2 = [make_divisible(min(i, max_channels) * width, 8) for i in args[0]]
-            args = [c1, c2]
-        elif m is HyperComputeModule:
-            c1, c2 = ch[f], args[0]
-            c2 = make_divisible(min(c2, max_channels) * width, 8)
-            args = [c1, c2, *args[1:]]
-        elif m in {MultiScaleGatedAttn}:
-            c1 = [ch[x] for x in f]
-            c2 = min(c1)
-            args = [c1]
-        elif m in {WFU, MultiScalePCA, MultiScalePCA_Down}:
-            c1 = [ch[x] for x in f]
-            c2 = c1[0]
-            args = [c1]
-        elif m in {HAFB, MFM}:
-            c1 = [ch[x] for x in f]
-            c2 = make_divisible(min(args[0], max_channels) * width, 8)
-            args = [c1, c2, *args[1:]]
-        elif m in {CrossAttentionBlock}:
-            c1 = [ch[x] for x in f]
-            c2 = c1[1]
-            args = [c1, *args[1:]]
-        elif m in {GDSAFusion}:
-            c1 = [ch[x] for x in f]
-            c2 = sum(c1)
-            args = [*c1, *args]
-        elif m is SNI:
-            c2, up_f = ch[f], args[0]
-            args = [up_f]
-        elif m is Blocks:
-            block_type = globals()[args[1]]
-            c1, c2 = ch[f], args[0] * block_type.expansion
-            args = [c1, args[0], block_type, *args[2:]]
-        elif m in {Pzconv, FCM, FCM_1, FCM_2, FCM_3}:
-            c2 = ch[f]
-            args = [c2]
-        elif m is PST:
-            c1, c_up, c2 = ch[f[0]], ch[f[1]], args[0]
-            c2 = make_divisible(min(c2, max_channels) * width, 8)
-            args = [c1, c_up, c2, *args[1:]]
-            args.insert(3, n)  # number of repeats
-            n = 1
-        elif m is HFP:
-            c2 = ch[f]
-            args = [c2, *args]
-        elif m is SDP:
-            c1 = [ch[x] for x in f]
-            c2 = make_divisible(min(args[0], max_channels) * width, 8)
-            args = [c1, c2, *args[1:]]
-        elif m is HyperACE:
-            c1 = ch[f[1]]
-            c2 = args[0]
-            c2 = make_divisible(min(c2, max_channels) * width, 8)
-            he = args[1] 
-            args = [c1, c2, n, he, *args[2:]]
-            n = 1
-        elif m is FullPAD_Tunnel:
-            c2 = ch[f[0]]
-        elif m is DPCF:
-            c1 = [ch[x] for x in f]
-            c2 = make_divisible(min(args[0], max_channels) * width, 8)
-            args = [c1, c2]
+
         elif m in {EfficientBalanceFusionModule, EfficientBalanceFusionModuleV1, EfficientBalanceFusionModuleV2, EfficientBalanceFusionModuleV3, EfficientBalanceFusionModuleV4, EfficientBalanceFusionModuleV5}:
             c1 = [ch[x] for x in f]
             c2 = 2 * c1[1]
