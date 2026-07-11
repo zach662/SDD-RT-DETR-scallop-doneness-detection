@@ -26,7 +26,9 @@ class AFGCAttention(nn.Module):
 
         return input*out
 
-class EfficientBalanceFusionModule(nn.Module):
+
+
+class EfficientBalanceFusionModuleV1(nn.Module):
     def __init__(self, inc) -> None:
         super().__init__()
         self.adjust_conv = nn.Identity()
