@@ -16,25 +16,6 @@ class RepC3(nn.Module):
 class Converse2D(nn.Module):
     def __init__(self, in_channels, out_channels, kernel_size, scale=1, padding_mode='circular', eps=1e-5, act=False):
         super(Converse2D, self).__init__()
-        """
-        Converse2D Operator for Image Restoration Tasks.
-
-        Args:
-            x (Tensor): Input tensor of shape (N, in_channels, H, W), where
-                        N is the batch size, H and W are spatial dimensions.
-            in_channels (int): Number of channels in the input tensor.
-            out_channels (int): Number of channels produced by the operation.
-            kernel_size (int): Size of the kernel.
-            scale (int): Upsampling factor. For example, `scale=2` doubles the resolution.
-            padding_mode (str, optional): Padding method. One of {'reflect', 'replicate', 'circular', 'constant'}.
-                                        Default is `circular`.
-            eps (float, optional): Small value added to denominators for numerical stability.
-                                Default is a small value like 1e-5.
-
-        Returns:
-            Tensor: Output tensor of shape (N, out_channels, H * scale, W * scale), where spatial dimensions
-                    are upsampled by the given scale factor.
-        """
         
         self.in_channels = in_channels
         self.out_channels = out_channels
