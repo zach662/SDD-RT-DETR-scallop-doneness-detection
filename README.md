@@ -29,6 +29,9 @@ This model serves as the visual perception core of a feedback temperature contro
 <img width="312" height="236" alt="a (91)" src="https://github.com/user-attachments/assets/de956de4-7dd4-4f44-b3bd-fb9444351c73" />
 
 <img width="312" height="236" alt="1491" src="https://github.com/user-attachments/assets/6598135c-5d3a-4861-9ab1-656e33622a40" />
+
+
+
 📁 Project Structure
 
 
@@ -75,7 +78,7 @@ Inference: run detect.py for detection on images or video streams.
 
 
 
-📦 Environment & DependenciesEnvironment & Dependencies
+⚙️ Environment & Dependencies
 
 This project is developed and tested under the following environment:
 
