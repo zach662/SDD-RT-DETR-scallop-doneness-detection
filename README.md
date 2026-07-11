@@ -4,13 +4,13 @@
 
 SDD‑RT‑DETR is a lightweight, real‑time object detection model designed specifically for scallop doneness classification in an industrial shucking line. SDD-RT-DETR integrates an enhanced backbone centered on the self-developed module HierarchicalRepBlock, a frequency-domain self-attetion module AIFI-EDFFN, a neck featuring the self-developed EfficientBalanceFusion module as the feature fusion unit and the Converse2DC3 module as the feature extraction unit, and a loss function named Wise-DIoU.
 
-It is capable of classifying shucked scallops into three categories:
+Trained on a scallop doneness dataset, SDD‑RT‑DETR reliably detects and classifies shucked scallops in challenging production environments such as stacking, occlusion, and lighting variations into three categories:
 
 Raw (under‑cooked)
 Medium (properly cooked)
 Cooked (over‑cooked)
 
-The model serves as the visual perception core of a feedback temperature control system, providing real‑time doneness information that enables automatic adjustment of the water‑bath temperature. This ensures consistent product quality while reducing manual intervention.
+This model serves as the visual perception core of a feedback temperature control system, providing real‑time doneness information that enables automatic adjustment of the water‑bath temperature. This ensures consistent product quality while reducing manual intervention.
 Designed for deployment on edge‑class hardware, it achieves < 50 ms inference per image with a lightweight footprint, making it suitable for high‑speed production environments.
 
 
@@ -47,6 +47,8 @@ Designed for deployment on edge‑class hardware, it achieves < 50 ms inference 
 
 
 🚀 Quick Start
+
+Before running training or inference, please modify the dataset path in `data.yaml` to point to your own dataset location.
 
 Model configuration: architecture details are defined in SDD-RT-DETR.yaml.
 
