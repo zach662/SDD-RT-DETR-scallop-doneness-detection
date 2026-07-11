@@ -10,8 +10,7 @@ Raw (under‑cooked)
 Medium (properly cooked)
 Cooked (over‑cooked)
 
-This model serves as the visual perception core of a feedback temperature control system, providing real‑time doneness information that enables automatic adjustment of the water‑bath temperature. This ensures consistent product quality while reducing manual intervention.
-Designed for deployment on edge‑class hardware, it achieves < 50 ms inference per image with a lightweight footprint, making it suitable for high‑speed production environments.
+This model serves as the visual perception core of a feedback temperature control system, achieving 95.5% accuracy, 93.6% recall, and 96.1% mAP50 on our scallop doneness dataset. It provides real‑time doneness information that enables automatic adjustment of the water‑bath temperature, ensuring consistent product quality while reducing manual intervention. Designed for deployment on edge‑class hardware, it achieves < 50 ms inference per image with a lightweight footprint, making it suitable for high‑speed production environments.
 
 
 
@@ -109,6 +108,8 @@ If you find this work useful, please consider citing our repository.
 <img width="156" height="118" alt="image" src="https://github.com/user-attachments/assets/4d676a5d-7bc2-42f2-b1f6-4713f048dff3" />
 
 <img width="156" height="118" alt="image" src="https://github.com/user-attachments/assets/3050dd11-698f-451c-b7ae-61cecd1dcff7" />
+
+<img width="156" height="118" alt="a (91)" src="https://github.com/user-attachments/assets/29170dcd-7352-45c0-a7c6-a7ec2940901b" />
 
 
 
