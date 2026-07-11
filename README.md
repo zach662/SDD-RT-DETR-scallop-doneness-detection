@@ -11,7 +11,7 @@ Medium (properly cooked)
 Cooked (over‑cooked)
 
 The model serves as the visual perception core of a feedback temperature control system, providing real‑time doneness information that enables automatic adjustment of the water‑bath temperature. This ensures consistent product quality while reducing manual intervention.
-Designed for deployment on edge‑class hardware, it achieves < 50 ms inference per image with a lightweight footprint (< 200 MB memory), making it suitable for high‑speed production environments.
+Designed for deployment on edge‑class hardware, it achieves < 50 ms inference per image with a lightweight footprint, making it suitable for high‑speed production environments.
 
 
 
@@ -36,7 +36,7 @@ Designed for deployment on edge‑class hardware, it achieves < 50 ms inference 
 
 ├── data.yaml             # Dataset configuration
 
-├── SDD-RT-DETR.yaml      # Model architecture definition
+├── cfg/SDD-RT-DETR.yaml      # Model architecture definition
 
 ├── train.py              # Training script
 
@@ -48,7 +48,7 @@ Designed for deployment on edge‑class hardware, it achieves < 50 ms inference 
 
 🚀 Quick Start
 
-Model configuration: all architecture details are defined in SDD-RT-DETR.yaml.
+Model configuration: architecture details are defined in SDD-RT-DETR.yaml.
 
 Custom modules: all improved components (HierarchicalRepBlock, AIFI-EDFFN, EfficientBalanceFusionModule, Converse2DC3, Wise-DIoU) are placed in the improved_modules/ folder.
 
