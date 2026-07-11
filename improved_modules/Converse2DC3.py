@@ -43,15 +43,13 @@ class Converse2D(nn.Module):
         self.padding = kernel_size - 1
         self.padding_mode = padding_mode
         self.eps = eps
-
-
-        # ensure depthwise
+        
         assert self.out_channels == self.in_channels
         self.weight = nn.Parameter(torch.randn(1, self.in_channels, self.kernel_size, self.kernel_size))
         self.bias = nn.Parameter(torch.zeros(1, self.in_channels, 1, 1))
         self.weight.data = nn.functional.softmax(self.weight.data.view(1,self.in_channels,-1), dim=-1).view(1, self.in_channels, self.kernel_size, self.kernel_size)
-
         self.act = nn.Identity()
+        
         if act:
             self.act = act()
         
