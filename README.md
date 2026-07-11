@@ -24,11 +24,11 @@ This model serves as the visual perception core of a feedback temperature contro
 
 
 
-<img width="312" height="236" alt="1118" src="https://github.com/user-attachments/assets/ee689008-126f-459d-932c-901ba0a0127e" />
+<img width="312" height="236" alt="a1" src="https://github.com/user-attachments/assets/be0c523e-23fb-47c5-abbf-ab8572fcd858" />
 
 <img width="312" height="236" alt="a (91)" src="https://github.com/user-attachments/assets/de956de4-7dd4-4f44-b3bd-fb9444351c73" />
 
-<img width="312" height="236" alt="1491" src="https://github.com/user-attachments/assets/6598135c-5d3a-4861-9ab1-656e33622a40" />
+<img width="312" height="236" alt="9" src="https://github.com/user-attachments/assets/e5e6bc28-2b5d-4b68-9372-501f59bfc83e" />
 
 
 
