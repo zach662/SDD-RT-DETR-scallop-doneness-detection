@@ -16,9 +16,9 @@ This model serves as the visual perception core of a feedback temperature contro
 
 🖼️ Detection Results
 
-<img width="312" height="236" alt="1" src="https://github.com/user-attachments/assets/71944757-8b8f-4b88-9b9b-76851f9d2019" />
-
 <img width="312" height="236" alt="5" src="https://github.com/user-attachments/assets/f5e1b421-2e42-43b6-8911-2e28f15f091a" />
+
+<img width="312" height="236" alt="1" src="https://github.com/user-attachments/assets/71944757-8b8f-4b88-9b9b-76851f9d2019" />
 
 <img width="312" height="236" alt="1118" src="https://github.com/user-attachments/assets/81663287-e18e-4ecf-aea1-0680033a58e3" />
 
