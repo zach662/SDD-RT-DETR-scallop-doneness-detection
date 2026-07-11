@@ -112,10 +112,10 @@ class LocalGlobalAttention(nn.Module):
 
         return output
 
-class HierarchicalRepNet(nn.Module):
+class HierarchicalRepBlock(nn.Module):
 
     def __init__(self, c1, c2, n=1, scale=0.5, e=0.5, patch_size=4):
-        super(HierarchicalRepNet, self).__init__()
+        super(HierarchicalRepBlock, self).__init__()
 
         self.c = int(c2 * e)
         self.mid = int(self.c * scale)
