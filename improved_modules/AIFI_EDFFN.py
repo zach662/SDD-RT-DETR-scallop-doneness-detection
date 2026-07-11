@@ -39,6 +39,8 @@ class EDFFN(nn.Module):
 
         return x.to(x_dtype)
 
+
+
 class TransformerEncoderLayer_EDFFN(nn.Module):
     def __init__(self, c1, cm=2048, num_heads=8, dropout=0.0, act=nn.GELU(), normalize_before=False):
         super().__init__()
@@ -60,13 +62,14 @@ class TransformerEncoderLayer_EDFFN(nn.Module):
         self.normalize_before = normalize_before
 
     def with_pos_embed(tensor, pos=None):
-        """Add position embeddings to the tensor if provided."""
         return tensor if pos is None else tensor + pos
 
     def forward(self, src, src_mask=None, src_key_padding_mask=None, pos=None):
         if self.normalize_before:
             return self.forward_pre(src, src_mask, src_key_padding_mask, pos)
         return self.forward_post(src, src_mask, src_key_padding_mask, pos)
+
+
 
 class AIFI_EDFFN(TransformerEncoderLayer_EDFFN):
 
