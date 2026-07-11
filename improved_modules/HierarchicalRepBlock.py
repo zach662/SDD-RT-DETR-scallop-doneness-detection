@@ -104,7 +104,6 @@ class LocalGlobalAttention(nn.Module):
         local_out = local_out * mask
         local_out = local_out @ self.top_down_transform
 
-        # Restore shapes
         local_out = local_out.reshape(B, H // P, W // P, self.output_dim)  # (B, H/P, W/P, output_dim)
         local_out = local_out.permute(0, 3, 1, 2)
         local_out = F.interpolate(local_out, size=(H, W), mode='bilinear', align_corners=False)
