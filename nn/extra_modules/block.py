@@ -5,12 +5,13 @@ from ..modules.block import get_activation, ConvNormLayer, BasicBlock, BottleNec
 from .attention import *
 
 __all__ = [
-           'Converse2DC3', 'Converse2D', 'GCConv', 'HierarchicalRepNet', 'EfficientBalanceFusionModuleV1', 'AIFI_EDFFN'
+           'Converse2DC3', 'Converse2D', 'GCConv', 'HierarchicalRepBlock', 'EfficientBalanceFusionModule', 'AIFI_EDFFN'
            ]
-class HierarchicalRepNet(nn.Module):
+
+class HierarchicalRepBlock(nn.Module):
 
     def __init__(self, c1, c2, n=1, scale=0.5, e=0.5, patch_size=4):
-        super(HierarchicalRepNet, self).__init__()
+        super(HierarchicalRepBlock, self).__init__()
 
         self.c = int(c2 * e)
         self.mid = int(self.c * scale)
@@ -18,9 +19,7 @@ class HierarchicalRepNet(nn.Module):
 
         self.cv1 = Conv(c1, 2 * self.c, 1, 1)
 
-
         self.cv2 = Conv(self.c + self.mid * (n + 1), c2, 1)
-
 
         self.cv3 = GCConv(self.c, self.mid, 3)
         self.lg1 = LocalGlobalAttention(self.mid, patch_size=self.patch_size)
@@ -54,7 +53,7 @@ class HierarchicalRepNet(nn.Module):
 
 
 
-class EfficientBalanceFusionModuleV1(nn.Module):
+class EfficientBalanceFusionModule(nn.Module):
     def __init__(self, inc) -> None:
         super().__init__()
 
