@@ -103,15 +103,13 @@ If you find this work useful, please consider citing our repository.
 
 🖼️ Detection Results
 
-<img width="156" height="118" alt="image" src="https://github.com/user-attachments/assets/6d3bb78d-f2a6-4dc4-816d-bab8ad8df8bf" />
+<img width="312" height="236" alt="image" src="https://github.com/user-attachments/assets/6d3bb78d-f2a6-4dc4-816d-bab8ad8df8bf" />
 
-<img width="156" height="118" alt="image" src="https://github.com/user-attachments/assets/4d676a5d-7bc2-42f2-b1f6-4713f048dff3" />
+<img width="312" height="236" alt="image" src="https://github.com/user-attachments/assets/4d676a5d-7bc2-42f2-b1f6-4713f048dff3" />
 
-<img width="156" height="118" alt="image" src="https://github.com/user-attachments/assets/3050dd11-698f-451c-b7ae-61cecd1dcff7" />
+<img width="312" height="236" alt="image" src="https://github.com/user-attachments/assets/3050dd11-698f-451c-b7ae-61cecd1dcff7" />
 
-<img width="156" height="118" alt="a (91)" src="https://github.com/user-attachments/assets/29170dcd-7352-45c0-a7c6-a7ec2940901b" />
 
-<img width="156" height="118" alt="1006" src="https://github.com/user-attachments/assets/7ed3f560-8337-481c-8d18-b39d4272eccd" />
 
 
 
