@@ -95,6 +95,11 @@ If you find this work useful, please consider citing our repository.
 
 
 
+📁 Sample Images: A subset of 50 images from the scallop doneness dataset is available at this link.
+[https://pan.baidu.com/s/1xOBTdDK4UGetyuL5eng0Ig?pwd=7j8s]
+
+
+
 🖼️ Detection Results
 
 <img width="156" height="118" alt="image" src="https://github.com/user-attachments/assets/6d3bb78d-f2a6-4dc4-816d-bab8ad8df8bf" />
