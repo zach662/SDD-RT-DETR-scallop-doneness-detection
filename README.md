@@ -54,8 +54,6 @@ This model serves as the visual perception core of a feedback temperature contro
 
 ├── data.yaml             # Dataset configuration
 
-├── cfg/SDD-RT-DETR.yaml      # Model architecture definition
-
 ├── train.py              # Training script
 
 ├── detect.py             # Detection/inference script
