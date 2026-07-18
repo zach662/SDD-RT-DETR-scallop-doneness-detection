@@ -40,8 +40,6 @@ This model serves as the visual perception core of a feedback temperature contro
 
 ├── models/               # Model definitions
 
-├── nn/                   # Neural network components
-
 ├── engine/               # Training and inference engine
 
 ├── cfg/                  # Configuration files
